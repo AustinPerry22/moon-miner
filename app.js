@@ -31,12 +31,14 @@ let autoUpgrades = [
 
 
 
-let gold = 999
+let gold = 9999
+let goldCollected = 0
 let clickTotal = 1
 let autoTotal = 0
 
 function mine() {
     clickTotalCalc()
+    goldCollected += clickTotal
     gold += clickTotal
     update()
 }
@@ -51,6 +53,7 @@ function clickTotalCalc() {
 function collectAuto() {
     autoTotalCalc()
     gold += autoTotal
+    goldCollected += autoTotal
     update()
 }
 
@@ -93,15 +96,16 @@ function buyAuto(upgrade) {
 
 function update() {
     let goldElem = document.getElementById('goldCount')
-    goldElem.innerText = 'Gold: ' + gold
+    goldElem.innerText = 'Current Gold: ' + gold
+
+    let goldCollectedElem = document.getElementById('goldCollected')
+    goldCollectedElem.innerText = 'Total Gold Collected: ' + goldCollected
 
     let clickTotalElem = document.getElementById('clickTotal')
     clickTotalElem.innerText = 'Click Total: ' + clickTotal
 
     let autoTotalElem = document.getElementById('autoTotal')
     autoTotalElem.innerText = 'Auto Total: ' + autoTotal
-
-
 
     clickUpgrades.forEach((upgrade) => {
         let clickElem = document.getElementById(upgrade.name)
