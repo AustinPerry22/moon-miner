@@ -1,0 +1,8 @@
+#marq1 {
+    width: 150vh;
+    height: 50vh;
+}
+
+marquee {
+    user-select: none;
+}
