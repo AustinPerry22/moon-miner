@@ -28,7 +28,7 @@ let autoUpgrades = [
     }
 ]
 
-let gold = 9999
+let gold = 0
 let goldCollected = 0
 let clickTotal = 1
 let autoTotal = 0
@@ -118,7 +118,7 @@ function update() {
 
 function disableButtons() {
     debugger
-    let buttons = document.getElementsByClassName("btn")
+    let buttons = document.getElementsByClassName("btn-div")
     for (let i = 0; i < buttons.length; i++) {
         //if cant afford then disable
         //else enable
@@ -126,19 +126,21 @@ function disableButtons() {
         let autoUpgrade = []
         let clickOrAuto = ''
         let button = document.getElementById(buttons[i].id)
-        clickUpgrade = clickUpgrades.filter((clickUpgrade) => clickUpgrade.name == button.id)
-        autoUpgrade = autoUpgrades.filter((autoUpgrade) => autoUpgrade.name == button.id)
-        if (clickUpgrade) {
+
+        clickUpgrade = clickUpgrades.filter((clickUpgrade) => clickUpgrade.name + '-btn' == button.id)
+        autoUpgrade = autoUpgrades.filter((autoUpgrade) => autoUpgrade.name + '-btn' == button.id)
+        if (clickUpgrade[0]) {
             clickOrAuto = 'Click'
         } else {
             clickOrAuto = 'Auto'
         }
-        if (clickUpgrade[0].price > gold || autoUpgrade[0].price > gold) {
+        // change this to be both auto or click for clickUpgrade
+        if (clickUpgrade[0].price < gold) {
             button.innerHTML = `<button class="btn btn-dark" onclick="buy${clickOrAuto
-                } ('${button.id}')">buy ${button.id}</button>`
+                }('${button.id.replace("-btn", "")}')">buy ${button.id.replace("-btn", "")}</button>`
         } else {
             button.innerHTML = `<button class="btn btn-dark" onclick="buy${clickOrAuto
-                } ('${button.id}')"disabled="true">buy ${button.id}</button>`
+                }('${button.id.replace("-btn", "")}')"disabled="true">buy ${button.id.replace("-btn", "")}</button>`
         }
     }
 }
