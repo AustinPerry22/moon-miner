@@ -108,6 +108,7 @@ function buyAuto(upgrade) {
 }
 
 function update() {
+
     let goldElem = document.getElementById('goldCount')
     goldElem.innerText = 'Current Gold: ' + gold
 
@@ -122,12 +123,20 @@ function update() {
 
     clickUpgrades.forEach((upgrade) => {
         let clickElem = document.getElementById(upgrade.name)
-        clickElem.innerText = `Owned: ${upgrade.quantity} | Price: ${upgrade.price}`
+        if (upgrade.unlocked == true) {
+            clickElem.innerText = `Owned: ${upgrade.quantity} | Price: ${upgrade.price}`
+        }
     })
     autoUpgrades.forEach((upgrade) => {
         let autoElem = document.getElementById(upgrade.name)
-        autoElem.innerText = `Owned: ${upgrade.quantity} | Price: ${upgrade.price}`
+        if (upgrade.unlocked == true) {
+            autoElem.innerText = `Owned: ${upgrade.quantity} | Price: ${upgrade.price}`
+        }
     })
+    localStorage.setItem('gold', JSON.stringify(gold))
+    localStorage.setItem('goldcollected', JSON.stringify(goldCollected))
+    localStorage.setItem('clickArray', JSON.stringify(clickUpgrades))
+    localStorage.setItem('autoArray', JSON.stringify(autoUpgrades))
     drawTrophies()
     unlockUpgrades()
     disableButtons()
@@ -195,6 +204,28 @@ function disableButtons() {
     }
 }
 
-setInterval(collectAuto, 1000)
+function loadStorage() {
+    let clickArrayStorage = localStorage.getItem("clickArray")
+    if (clickArrayStorage != null) {
+        clickUpgrades = JSON.parse(clickArrayStorage)
+    }
+    let autoArrayStorage = localStorage.getItem('autoArray')
+    if (autoArrayStorage != null) {
+        autoUpgrades = JSON.parse(autoArrayStorage)
+    }
+    let goldStorage = localStorage.getItem("gold")
+    if (goldStorage != null) {
+        gold = JSON.parse(goldStorage)
+    }
+    let goldColStorage = localStorage.getItem("goldcollected")
+    if (goldColStorage != null) {
+        goldCollected = JSON.parse(goldColStorage)
+    }
+    clickTotalCalc()
+    autoTotalCalc()
+}
 
+
+setInterval(collectAuto, 1000)
+loadStorage()
 update()

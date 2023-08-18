@@ -7,8 +7,9 @@
     height: 15vh;
 }
 
-marquee {
+img {
     user-select: none;
+    -webkit-user-drag: none;
 }
 
 .hidden {
