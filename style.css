@@ -1,12 +1,16 @@
 #marq1 {
-    width: 150vh;
     height: 50vh;
+    width: inherit;
+}
+
+#trophy-row img {
+    height: 15vh;
 }
 
 marquee {
     user-select: none;
 }
 
-.hidden{
+.hidden {
     display: none;
 }

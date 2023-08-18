@@ -88,7 +88,6 @@ function buyClick(upgrade) {
                 clickUpgrade.price += Math.floor(clickUpgrade.price * .1)
                 clickTotalCalc()
                 update()
-                console.log("bought")
             }
         }
     })
@@ -100,10 +99,9 @@ function buyAuto(upgrade) {
             if (gold >= autoUpgrade.price) {
                 autoUpgrade.quantity++
                 gold -= autoUpgrade.price
-                autoUpgrade.price += Math.floor(autoUpgrade.price * .2)
+                autoUpgrade.price += Math.floor(autoUpgrade.price * .1)
                 autoTotalCalc()
                 update()
-                console.log("bought")
             }
         }
     })
@@ -130,8 +128,30 @@ function update() {
         let autoElem = document.getElementById(upgrade.name)
         autoElem.innerText = `Owned: ${upgrade.quantity} | Price: ${upgrade.price}`
     })
+    drawTrophies()
     unlockUpgrades()
     disableButtons()
+}
+
+function drawTrophies() {
+    let trophy100 = document.getElementById("trophy100")
+    let trophy100txt = document.getElementById("trophy100txt")
+    let trophy1000 = document.getElementById("trophy1000")
+    let trophy1000txt = document.getElementById("trophy1000txt")
+    let trophy9999 = document.getElementById("trophy9999")
+    let trophy9999txt = document.getElementById("trophy9999txt")
+    if (goldCollected >= 100 && trophy100.classList.contains('hidden')) {
+        trophy100.classList.remove('hidden')
+        trophy100txt.innerText = "Got 100!"
+    }
+    if (goldCollected >= 1000 && trophy1000.classList.contains('hidden')) {
+        trophy1000.classList.remove('hidden')
+        trophy1000txt.innerText = "Got 1000!"
+    }
+    if (goldCollected >= 9999 && trophy9999.classList.contains('hidden')) {
+        trophy9999.classList.remove('hidden')
+        trophy9999txt.innerText = "Got 9999!"
+    }
 }
 
 function unlockUpgrades() {
@@ -175,6 +195,6 @@ function disableButtons() {
     }
 }
 
-setInterval(collectAuto, 3000)
+setInterval(collectAuto, 1000)
 
 update()
