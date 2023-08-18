@@ -7,6 +7,12 @@
     height: 15vh;
 }
 
+body {
+    background-image: url("https://media4.giphy.com/media/l378wcSfS7eXWQgla/200w.webp?cid=ecf05e47nv6ijs6jh0a0f81whf9riv8wd52rpptjvj9qpb89&ep=v1_gifs_search&rid=200w.webp&ct=g");
+    background-size: cover;
+    background-position: center;
+}
+
 img {
     user-select: none;
     -webkit-user-drag: none;
