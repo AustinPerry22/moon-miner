@@ -6,3 +6,7 @@
 marquee {
     user-select: none;
 }
+
+.hidden{
+    display: none;
+}

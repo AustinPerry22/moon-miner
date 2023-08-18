@@ -1,30 +1,48 @@
 let clickUpgrades = [
     {
         name: 'clickUpgrade1',
-        price: 25,
+        price: 15,
         quantity: 0,
-        multiplier: 1
+        multiplier: 1,
+        unlocked: false
     },
     {
         name: 'clickUpgrade2',
         price: 50,
         quantity: 0,
-        multiplier: 3
+        multiplier: 3,
+        unlocked: false
+    },
+    {
+        name: 'clickUpgrade3',
+        price: 200,
+        quantity: 0,
+        multiplier: 10,
+        unlocked: false
     }
 ]
 
 let autoUpgrades = [
     {
         name: 'autoUpgrade1',
-        price: 100,
+        price: 50,
         quantity: 0,
-        multiplier: 1
+        multiplier: 1,
+        unlocked: false
     },
     {
         name: 'autoUpgrade2',
-        price: 250,
+        price: 125,
         quantity: 0,
-        multiplier: 5
+        multiplier: 3,
+        unlocked: false
+    },
+    {
+        name: 'autoUpgrade3',
+        price: 350,
+        quantity: 0,
+        multiplier: 10,
+        unlocked: false
     }
 ]
 
@@ -112,8 +130,21 @@ function update() {
         let autoElem = document.getElementById(upgrade.name)
         autoElem.innerText = `Owned: ${upgrade.quantity} | Price: ${upgrade.price}`
     })
-
+    unlockUpgrades()
     disableButtons()
+}
+
+function unlockUpgrades() {
+    clickUpgrades.forEach((upgrade => {
+        if (upgrade.price <= gold) {
+            upgrade.unlocked = true
+        }
+    }))
+    autoUpgrades.forEach((upgrade) => {
+        if (upgrade.price <= gold) {
+            upgrade.unlocked = true
+        }
+    })
 }
 
 function disableButtons() {
@@ -134,10 +165,10 @@ function disableButtons() {
             clickOrAuto = 'Auto'
             clickAuto = autoUpgrade[0]
         }
-        if (clickAuto.price <= gold) {
+        if (clickAuto.price <= gold && clickAuto.unlocked == true) {
             button.innerHTML = `<button class="btn btn-dark" onclick="buy${clickOrAuto
                 }('${button.id.replace("-btn", "")}')">buy ${button.id.replace("-btn", "")}</button>`
-        } else {
+        } else if (clickAuto.unlocked == true) {
             button.innerHTML = `<button class="btn btn-dark" onclick="buy${clickOrAuto
                 }('${button.id.replace("-btn", "")}')"disabled="true">buy ${button.id.replace("-btn", "")}</button>`
         }
