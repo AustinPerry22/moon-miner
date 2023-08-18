@@ -67,6 +67,7 @@ function buyClick(upgrade) {
             if (gold >= clickUpgrade.price) {
                 clickUpgrade.quantity++
                 gold -= clickUpgrade.price
+                clickUpgrade.price += Math.floor(clickUpgrade.price * .1)
                 clickTotalCalc()
                 update()
                 console.log("bought")
@@ -81,6 +82,7 @@ function buyAuto(upgrade) {
             if (gold >= autoUpgrade.price) {
                 autoUpgrade.quantity++
                 gold -= autoUpgrade.price
+                autoUpgrade.price += Math.floor(autoUpgrade.price * .2)
                 autoTotalCalc()
                 update()
                 console.log("bought")
@@ -103,11 +105,11 @@ function update() {
 
     clickUpgrades.forEach((upgrade) => {
         let clickElem = document.getElementById(upgrade.name)
-        clickElem.innerText = `${upgrade.name}: ${upgrade.quantity}`
+        clickElem.innerText = `Owned: ${upgrade.quantity} | Price: ${upgrade.price}`
     })
     autoUpgrades.forEach((upgrade) => {
         let autoElem = document.getElementById(upgrade.name)
-        autoElem.innerText = `${upgrade.name}: ${upgrade.quantity}`
+        autoElem.innerText = `Owned: ${upgrade.quantity} | Price: ${upgrade.price}`
     })
 }
 
