@@ -28,9 +28,6 @@ let autoUpgrades = [
     }
 ]
 
-
-
-
 let gold = 9999
 let goldCollected = 0
 let clickTotal = 1
@@ -115,8 +112,36 @@ function update() {
         let autoElem = document.getElementById(upgrade.name)
         autoElem.innerText = `Owned: ${upgrade.quantity} | Price: ${upgrade.price}`
     })
+
+    disableButtons()
 }
 
+function disableButtons() {
+    debugger
+    let buttons = document.getElementsByClassName("btn")
+    for (let i = 0; i < buttons.length; i++) {
+        //if cant afford then disable
+        //else enable
+        let clickUpgrade = []
+        let autoUpgrade = []
+        let clickOrAuto = ''
+        let button = document.getElementById(buttons[i].id)
+        clickUpgrade = clickUpgrades.filter((clickUpgrade) => clickUpgrade.name == button.id)
+        autoUpgrade = autoUpgrades.filter((autoUpgrade) => autoUpgrade.name == button.id)
+        if (clickUpgrade) {
+            clickOrAuto = 'Click'
+        } else {
+            clickOrAuto = 'Auto'
+        }
+        if (clickUpgrade[0].price > gold || autoUpgrade[0].price > gold) {
+            button.innerHTML = `<button class="btn btn-dark" onclick="buy${clickOrAuto
+                } ('${button.id}')">buy ${button.id}</button>`
+        } else {
+            button.innerHTML = `<button class="btn btn-dark" onclick="buy${clickOrAuto
+                } ('${button.id}')"disabled="true">buy ${button.id}</button>`
+        }
+    }
+}
 
 setInterval(collectAuto, 3000)
 
