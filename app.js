@@ -1,20 +1,20 @@
 let clickUpgrades = [
     {
-        name: 'clickUpgrade1',
+        name: 'Old-Mouse',
         price: 15,
         quantity: 0,
         multiplier: 1,
         unlocked: false
     },
     {
-        name: 'clickUpgrade2',
+        name: 'New-Mouse',
         price: 50,
         quantity: 0,
         multiplier: 3,
         unlocked: false
     },
     {
-        name: 'clickUpgrade3',
+        name: 'New-PC',
         price: 200,
         quantity: 0,
         multiplier: 10,
@@ -24,21 +24,21 @@ let clickUpgrades = [
 
 let autoUpgrades = [
     {
-        name: 'autoUpgrade1',
+        name: 'AutoClicker',
         price: 50,
         quantity: 0,
         multiplier: 1,
         unlocked: false
     },
     {
-        name: 'autoUpgrade2',
+        name: 'Lab-Rat',
         price: 125,
         quantity: 0,
         multiplier: 3,
         unlocked: false
     },
     {
-        name: 'autoUpgrade3',
+        name: 'Steve',
         price: 350,
         quantity: 0,
         multiplier: 10,
@@ -110,27 +110,27 @@ function buyAuto(upgrade) {
 function update() {
 
     let goldElem = document.getElementById('goldCount')
-    goldElem.innerText = 'Current Gold: ' + gold
+    goldElem.innerText = 'Current Clicks: ' + gold
 
     let goldCollectedElem = document.getElementById('goldCollected')
-    goldCollectedElem.innerText = 'Total Gold Collected: ' + goldCollected
+    goldCollectedElem.innerText = 'Total Clicks Collected: ' + goldCollected
 
     let clickTotalElem = document.getElementById('clickTotal')
-    clickTotalElem.innerText = 'Click Total: ' + clickTotal
+    clickTotalElem.innerText = 'Manual Click Multiplier: x' + clickTotal
 
     let autoTotalElem = document.getElementById('autoTotal')
-    autoTotalElem.innerText = 'Auto Total: ' + autoTotal
+    autoTotalElem.innerText = 'Auto Click Multiplier: x' + autoTotal
 
     clickUpgrades.forEach((upgrade) => {
         let clickElem = document.getElementById(upgrade.name)
         if (upgrade.unlocked == true) {
-            clickElem.innerText = `Owned: ${upgrade.quantity} | Price: ${upgrade.price}`
+            clickElem.innerText = `Owned: ${upgrade.quantity} | Price: ${upgrade.price} Clicks`
         }
     })
     autoUpgrades.forEach((upgrade) => {
         let autoElem = document.getElementById(upgrade.name)
         if (upgrade.unlocked == true) {
-            autoElem.innerText = `Owned: ${upgrade.quantity} | Price: ${upgrade.price}`
+            autoElem.innerText = `Owned: ${upgrade.quantity} | Price: ${upgrade.price} Clicks`
         }
     })
     localStorage.setItem('gold', JSON.stringify(gold))
@@ -151,15 +151,15 @@ function drawTrophies() {
     let trophy9999txt = document.getElementById("trophy9999txt")
     if (goldCollected >= 100 && trophy100.classList.contains('hidden')) {
         trophy100.classList.remove('hidden')
-        trophy100txt.innerText = "Got 100!"
+        trophy100txt.innerText = "Clicked 100!"
     }
     if (goldCollected >= 1000 && trophy1000.classList.contains('hidden')) {
         trophy1000.classList.remove('hidden')
-        trophy1000txt.innerText = "Got 1000!"
+        trophy1000txt.innerText = "Clicked 1000!"
     }
     if (goldCollected >= 9999 && trophy9999.classList.contains('hidden')) {
         trophy9999.classList.remove('hidden')
-        trophy9999txt.innerText = "Got 9999!"
+        trophy9999txt.innerText = "Clicked 9999!"
     }
 }
 

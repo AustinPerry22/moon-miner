@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moon Miner</title>
+    <title>Something Clicker</title>
     <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css' rel='stylesheet'
         integrity='sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD' crossorigin='anonymous'>
     <link rel="stylesheet" href="//cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css">
@@ -15,8 +15,8 @@
     <header class="container-fluid text-center">
         <section class="row">
             <div class="col-12">
-                <h1>MY TITLE</h1>
-                <h5>Click the whatever</h5>
+                <h1>Something Clicker</h1>
+                <h5>Click the thing</h5>
             </div>
         </section>
     </header>
@@ -47,66 +47,70 @@
                             onclick="mine()">
                     </marquee>
                 </marquee>
-                <p id="goldCount">Current Gold: 0</p>
-                <p id="goldCollected">Total Gold Collected: 0</p>
+                <p id="goldCount">Current Things Clicked: 0</p>
+                <p id="goldCollected">Total Things Clicked: 0</p>
             </div>
         </section>
         <section class="row">
-            <div class="col-6">
+            <div class="col-12">
                 <p id="clickTotal"></p>
             </div>
-            <div class="col-6">
+        </section>
+        <section class="row justify-content-evenly">
+            <div class="col-6 col-md-4">
+                <div class="btn-div" id="Old-Mouse-btn">
+                    <button class=" btn btn-dark hidden" onclick="buyClick('Old-Mouse')">buy item1</button>
+                </div>
+                <p id="Old-Mouse"></p>
+            </div>
+            <div class="col-6 col-md-4">
+                <div class="btn-div" id="New-Mouse-btn">
+                    <button class="btn btn-dark hidden" onclick="buyClick('New-Mouse')" id="New-Mouse-btn">buy
+                        item2</button>
+                </div>
+                <p id="New-Mouse"></p>
+            </div>
+            <div class="col-6 col-md-4">
+                <div class="btn-div" id="New-PC-btn">
+                    <button class="btn btn-dark hidden" onclick="buyClick('New-PC')" id="New-PC-btn">buy
+                        item2</button>
+                </div>
+                <p id="New-PC"></p>
+            </div>
+        </section>
+        <section class="row">
+            <div class="col-12">
                 <p id="autoTotal"></p>
             </div>
         </section>
         <section class="row justify-content-evenly">
             <div class="col-6 col-md-4">
-                <div class="btn-div" id="clickUpgrade1-btn">
-                    <button class=" btn btn-dark hidden" onclick="buyClick('clickUpgrade1')">buy item1</button>
-                </div>
-                <p id="clickUpgrade1"></p>
-            </div>
-            <div class="col-6 col-md-4">
-                <div class="btn-div" id="clickUpgrade2-btn">
-                    <button class="btn btn-dark hidden" onclick="buyClick('clickUpgrade2')" id="clickUpgrade2-btn">buy
-                        item2</button>
-                </div>
-                <p id="clickUpgrade2"></p>
-            </div>
-            <div class="col-6 col-md-4">
-                <div class="btn-div" id="clickUpgrade3-btn">
-                    <button class="btn btn-dark hidden" onclick="buyClick('clickUpgrade3')" id="clickUpgrade3-btn">buy
-                        item2</button>
-                </div>
-                <p id="clickUpgrade3"></p>
-            </div>
-            <div class="col-6 col-md-4">
-                <div class="btn-div" id="autoUpgrade1-btn">
-                    <button class="btn btn-dark hidden" onclick="buyAuto('autoUpgrade1')" id="autoUpgrade1-btn">buy
+                <div class="btn-div" id="AutoClicker-btn">
+                    <button class="btn btn-dark hidden" onclick="buyAuto('AutoClicker')" id="AutoClicker-btn">buy
                         auto1</button>
                 </div>
-                <p id="autoUpgrade1"></p>
+                <p id="AutoClicker"></p>
             </div>
             <div class="col-6 col-md-4">
-                <div class="btn-div" id="autoUpgrade2-btn">
-                    <button class="btn btn-dark hidden" onclick="buyAuto('autoUpgrade2')" id="autoUpgrade1-btn">buy
+                <div class="btn-div" id="Lab-Rat-btn">
+                    <button class="btn btn-dark hidden" onclick="buyAuto('Lab-Rat')" id="Lab-Rat-btn">buy
                         auto2</button>
                 </div>
-                <p id="autoUpgrade2"></p>
+                <p id="Lab-Rat"></p>
             </div>
             <div class="col-6 col-md-4">
-                <div class="btn-div" id="autoUpgrade3-btn">
-                    <button class="btn btn-dark hidden" onclick="buyAuto('autoUpgrade3')" id="autoUpgrade3-btn">buy
+                <div class="btn-div" id="Steve-btn">
+                    <button class="btn btn-dark hidden" onclick="buyAuto('Steve')" id="Steve-btn">buy
                         auto2</button>
                 </div>
-                <p id="autoUpgrade3"></p>
+                <p id="Steve"></p>
             </div>
         </section>
     </main>
     <footer class="container-fluid text-center">
         <section class="row">
             <div class="col-12">
-                <h6>My title, blah blah</h6>
+                <h6><a href="#top">Go back and click the thing</a></h6>
             </div>
         </section>
     </footer>
