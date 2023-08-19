@@ -110,10 +110,10 @@ function buyAuto(upgrade) {
 function update() {
 
     let goldElem = document.getElementById('goldCount')
-    goldElem.innerText = 'Current Clicks: ' + gold
+    goldElem.innerText = gold.toString()
 
     let goldCollectedElem = document.getElementById('goldCollected')
-    goldCollectedElem.innerText = 'Total Clicks Collected: ' + goldCollected
+    goldCollectedElem.innerText = goldCollected.toString()
 
     let clickTotalElem = document.getElementById('clickTotal')
     clickTotalElem.innerText = 'Manual Click Multiplier: x' + clickTotal
@@ -151,14 +151,17 @@ function drawTrophies() {
     let trophy9999txt = document.getElementById("trophy9999txt")
     if (goldCollected >= 100 && trophy100.classList.contains('hidden')) {
         trophy100.classList.remove('hidden')
+        trophy100txt.classList.add('color-gold')
         trophy100txt.innerText = "Clicked 100!"
     }
     if (goldCollected >= 1000 && trophy1000.classList.contains('hidden')) {
         trophy1000.classList.remove('hidden')
+        trophy1000txt.classList.add('color-gold')
         trophy1000txt.innerText = "Clicked 1000!"
     }
     if (goldCollected >= 9999 && trophy9999.classList.contains('hidden')) {
         trophy9999.classList.remove('hidden')
+        trophy9999txt.classList.add('color-gold')
         trophy9999txt.innerText = "Clicked 9999!"
     }
 }
@@ -195,7 +198,7 @@ function disableButtons() {
             clickAuto = autoUpgrade[0]
         }
         if (clickAuto.price <= gold && clickAuto.unlocked == true) {
-            button.innerHTML = `<button class="btn btn-dark" onclick="buy${clickOrAuto
+            button.innerHTML = `<button class="btn btn-dark" title="Adds ${clickAuto.multiplier} to the ${clickOrAuto} Multiplier" onclick="buy${clickOrAuto
                 }('${button.id.replace("-btn", "")}')">buy ${button.id.replace("-btn", "")}</button>`
         } else if (clickAuto.unlocked == true) {
             button.innerHTML = `<button class="btn btn-dark" onclick="buy${clickOrAuto

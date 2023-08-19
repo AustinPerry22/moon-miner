@@ -18,6 +18,15 @@ img {
     -webkit-user-drag: none;
 }
 
+.color-gold {
+    color: #8d7800;
+}
+
+.section-border {
+    border-top: black solid;
+    border-top-width: 3vh;
+}
+
 .hidden {
     display: none;
 }
