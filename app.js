@@ -229,6 +229,6 @@ function loadStorage() {
 }
 
 
-setInterval(collectAuto, 1000)
+setInterval(collectAuto, 3000)
 loadStorage()
 update()
